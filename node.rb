@@ -3,7 +3,7 @@
 # holds value and point to a next node
 class Node
   attr_accessor :next_node
-  attr_reader :value
+  attr_reader :value, :key
 
   def initialize(key, value = nil)
     @key = key
