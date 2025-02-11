@@ -25,7 +25,8 @@ class HashMap
     index = hash(key) % @capacity
     if !@map[index]
       list = LinkedList.new
-      @map[index] = list.append(key, value)
+      list.append(key, value)
+      @map[index] = list
     end
   end
 end

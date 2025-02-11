@@ -57,6 +57,13 @@ class LinkedList
     false
   end
 
+  def contains_k?(key)
+    traverse_list do |node|
+      return true if node.key == key
+    end
+    false
+  end
+
   def find(value)
     i = 0
     traverse_list do |node|
