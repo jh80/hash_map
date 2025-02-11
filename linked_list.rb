@@ -73,6 +73,15 @@ class LinkedList
     end
   end
 
+  def find_k(key)
+    i = 0
+    traverse_list do |node|
+      return i if node.key == key
+
+      i += 1
+    end
+  end
+
   def to_s
     string = ''
     traverse_list do |node|
