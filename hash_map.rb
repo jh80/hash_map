@@ -33,6 +33,13 @@ class HashMap
     end
   end
 
+  def get(key)
+    index = get_index(key)
+    return nil if (l_i = @map[index].find_k(key)).nil?
+    node = @map[index].at(l_i)
+    node.value
+  end
+
   private
 
   def start_list(key, value)
