@@ -35,6 +35,7 @@ class HashMap
 
   def get(key)
     index = get_index(key)
+    return nil unless @map[index]
     return nil if (l_i = @map[index].find_k(key)).nil?
     node = @map[index].at(l_i)
     node.value
