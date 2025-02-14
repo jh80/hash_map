@@ -41,6 +41,13 @@ class HashMap
     node.value
   end
 
+  def has?(key)
+    index = get_index(key)
+    return false unless @map[index]
+    return false unless @map[index].find_k(key)
+    return true
+  end
+
   private
 
   def start_list(key, value)
