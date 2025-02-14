@@ -27,6 +27,14 @@ class HashMap
       list = LinkedList.new
       list.append(key, value)
       @map[index] = list
+      return
+    end
+    l_i = @map[index].find_k(key)
+    if l_i
+      node = @map[index].at(l_i)
+      node.value = value
+    else
+      @map[index].append(key, value)
     end
   end
 end
