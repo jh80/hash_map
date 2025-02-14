@@ -22,7 +22,7 @@ class HashMap
   end
 
   def set(key, value)
-    index = hash(key) % @capacity
+    index = get_index(key)
     if @map[index].nil?
       @map[index] = start_list(key, value)
     elsif (l_i = @map[index].find_k(key)).nil?
@@ -39,5 +39,9 @@ class HashMap
     list = LinkedList.new
     list.append(key, value)
     list
+  end
+
+  def get_index(key)
+    hash(key) % @capacity
   end
 end
