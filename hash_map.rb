@@ -48,6 +48,17 @@ class HashMap
     return true
   end
 
+  def remove(key)
+    value = nil
+    index = get_index(key)
+    l_i = @map[index].find_k(key)
+    if  l_i
+      value = get(key)
+      @map[index].remove_at(l_i)
+    end
+    value
+  end
+
   private
 
   def start_list(key, value)
