@@ -73,6 +73,14 @@ class HashMap
     @map = []
   end
 
+  def keys
+    keys = []
+    traverse_hash_map do |list|
+      keys += list.array_k unless list.nil?
+    end
+    keys
+  end
+
   def traverse_hash_map
     index = 0
     while index < @map.length
