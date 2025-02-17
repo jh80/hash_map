@@ -117,6 +117,7 @@ class LinkedList
     traverse_list {|node|keys << node.key}
     keys
   end
+
   # private
 
   def traverse_list
@@ -130,5 +131,11 @@ class LinkedList
   def insert_between(new_node, node_before, node_after)
     new_node.next_node = node_after
     node_before.next_node = new_node
+  end
+
+  def array
+    array = []
+    traverse_list {|node| array << yield(node)}
+    array
   end
 end
