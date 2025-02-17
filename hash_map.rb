@@ -69,6 +69,9 @@ class HashMap
     count
   end
 
+  def clear
+    @map = []
+  end
   private
 
   def start_list(key, value)
