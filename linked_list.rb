@@ -120,7 +120,7 @@ class LinkedList
     to_array {|node| node.value}
   end
 
-  # private
+  private
 
   def traverse_list
     curr = @head
