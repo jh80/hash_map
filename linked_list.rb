@@ -133,7 +133,7 @@ class LinkedList
     node_before.next_node = new_node
   end
 
-  def array
+  def to_array
     array = []
     traverse_list {|node| array << yield(node)}
     array
