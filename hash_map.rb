@@ -59,6 +59,16 @@ class HashMap
     value
   end
 
+  def length
+    index = 0
+    count = 0
+    while index < @map.length
+      count += @map[index].size unless @map[index].nil?
+      index += 1
+    end
+    count
+  end
+
   private
 
   def start_list(key, value)
