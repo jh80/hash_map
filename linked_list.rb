@@ -111,6 +111,12 @@ class LinkedList
       i += 1
     end
   end
+
+  def array_k
+    keys = []
+    traverse_list {|node|keys << node.key}
+    keys
+  end
   # private
 
   def traverse_list
