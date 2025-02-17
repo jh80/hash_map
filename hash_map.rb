@@ -81,13 +81,6 @@ class HashMap
     keys
   end
 
-  def traverse_hash_map
-    index = 0
-    while index < @map.length
-      yield(@map[index])
-      index += 1
-    end
-  end
   private
 
   def start_list(key, value)
@@ -100,5 +93,11 @@ class HashMap
     hash(key) % @capacity
   end
 
-
+  def traverse_hash_map
+    index = 0
+    while index < @map.length
+      yield(@map[index])
+      index += 1
+    end
+  end
 end
