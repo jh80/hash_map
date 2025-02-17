@@ -118,6 +118,10 @@ class LinkedList
     keys
   end
 
+  def array_v
+    to_array {|node| node.value}
+  end
+
   # private
 
   def traverse_list
