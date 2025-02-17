@@ -113,9 +113,7 @@ class LinkedList
   end
 
   def array_k
-    keys = []
-    traverse_list {|node|keys << node.key}
-    keys
+    to_array {|node| node.key}
   end
 
   def array_v
