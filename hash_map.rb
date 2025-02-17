@@ -81,6 +81,9 @@ class HashMap
     keys
   end
 
+  def values
+    to_array {|list| list.array_v}
+  end
   private
 
   def start_list(key, value)
@@ -99,5 +102,13 @@ class HashMap
       yield(@map[index])
       index += 1
     end
+  end
+
+  def to_array
+    array = []
+    traverse_hash_map do |list|
+      array += yield(list) unless list.nil?
+    end
+    array
   end
 end
