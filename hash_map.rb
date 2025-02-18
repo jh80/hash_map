@@ -22,7 +22,9 @@ class HashMap
   end
 
   def set(key, value)
-
+    if (length + 1) > (@load_factor * @capacity)
+      grow_hash_map
+    end
     index = get_index(key)
     if @map[index].nil?
       @map[index] = start_list(key, value)
