@@ -22,6 +22,7 @@ class HashMap
   end
 
   def set(key, value)
+
     index = get_index(key)
     if @map[index].nil?
       @map[index] = start_list(key, value)
@@ -121,5 +122,14 @@ class HashMap
       array += yield(list) unless list.nil?
     end
     array
+  end
+
+  def grow_hash_map
+    k_vs = entries
+    @capacity *= 2
+    clear
+    k_vs.each do |entry|
+      set(entry[0], entry[1])
+    end
   end
 end
