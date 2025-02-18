@@ -84,6 +84,17 @@ class HashMap
   def values
     to_array {|list| list.array_v}
   end
+
+  def entries
+    to_array do |list| 
+      k_v = []
+      list.traverse_list do |node|
+        k_v << [node.key, node.value]
+      end
+      k_v
+    end
+  end
+
   private
 
   def start_list(key, value)
