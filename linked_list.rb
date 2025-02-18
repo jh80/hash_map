@@ -120,8 +120,6 @@ class LinkedList
     to_array {|node| node.value}
   end
 
-  private
-
   def traverse_list
     curr = @head
     until curr.nil?
@@ -130,6 +128,8 @@ class LinkedList
     end
   end
 
+  private
+  
   def insert_between(new_node, node_before, node_after)
     new_node.next_node = node_after
     node_before.next_node = new_node
