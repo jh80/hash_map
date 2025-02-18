@@ -6,8 +6,8 @@ require './node'
 class HashMap
   attr_accessor :load_factor, :capacity, :map
 
-  def initialize
-        @load_factor = 0.75
+  def initialize(load_factor = 0.75)
+        @load_factor = load_factor
         @capacity = 16
         @map = []
   end 
