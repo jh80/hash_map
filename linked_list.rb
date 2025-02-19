@@ -113,11 +113,11 @@ class LinkedList
   end
 
   def array_k
-    to_array {|node| node.key}
+    to_array { |node| node.key }
   end
 
   def array_v
-    to_array {|node| node.value}
+    to_array { |node| node.value }
   end
 
   def traverse_list
@@ -129,7 +129,7 @@ class LinkedList
   end
 
   private
-  
+
   def insert_between(new_node, node_before, node_after)
     new_node.next_node = node_after
     node_before.next_node = new_node
@@ -137,7 +137,7 @@ class LinkedList
 
   def to_array
     array = []
-    traverse_list {|node| array << yield(node)}
+    traverse_list { |node| array << yield(node) }
     array
   end
 end

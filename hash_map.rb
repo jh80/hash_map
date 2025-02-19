@@ -1,5 +1,5 @@
 # frozen_string_literal: true
- 
+
 require './linked_list'
 require './node'
 
@@ -7,24 +7,24 @@ class HashMap
   attr_accessor :load_factor, :capacity
 
   def initialize(load_factor = 0.75)
-        @load_factor = load_factor
-        @capacity = 16
-        @map = []
-  end 
+    @load_factor = load_factor
+    @capacity = 16
+    @map = []
+  end
 
   def hash(key)
     hash_code = 0
     prime_number = 31
-       
+
     key.each_char { |char| hash_code = prime_number * hash_code + char.ord }
-       
+
     hash_code
   end
 
   def set(key, value)
     index = get_index(key)
     l_i = @map[index].find_k(key) unless @map[index].nil?
-    if l_i        
+    if l_i
       node = @map[index].at(l_i)
       node.value = value
       return
@@ -42,6 +42,7 @@ class HashMap
     index = get_index(key)
     return nil unless @map[index]
     return nil if (l_i = @map[index].find_k(key)).nil?
+
     node = @map[index].at(l_i)
     node.value
   end
@@ -50,7 +51,8 @@ class HashMap
     index = get_index(key)
     return false unless @map[index]
     return false unless @map[index].find_k(key)
-    return true
+
+    true
   end
 
   def remove(key)
@@ -87,11 +89,11 @@ class HashMap
   end
 
   def values
-    to_array {|list| list.array_v}
+    to_array { |list| list.array_v }
   end
 
   def entries
-    to_array do |list| 
+    to_array do |list|
       k_v = []
       list.traverse_list do |node|
         k_v << [node.key, node.value]
