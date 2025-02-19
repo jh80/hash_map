@@ -4,7 +4,7 @@ require './linked_list'
 require './node'
 
 class HashMap
-  attr_accessor :load_factor, :capacity, :map
+  attr_accessor :load_factor, :capacity
 
   def initialize(load_factor = 0.75)
         @load_factor = load_factor
