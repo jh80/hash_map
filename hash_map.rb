@@ -22,17 +22,19 @@ class HashMap
   end
 
   def set(key, value)
-    if (length + 1) > (@load_factor * @capacity)
-      grow_hash_map
-    end
     index = get_index(key)
-    if @map[index].nil?
-      @map[index] = start_list(key, value)
-    elsif (l_i = @map[index].find_k(key)).nil?
-      @map[index].append(key, value)
-    else
+    l_i = @map[index].find_k(key) unless @map[index].nil?
+    if l_i        
       node = @map[index].at(l_i)
       node.value = value
+      return
+    elsif (length + 1) > (@load_factor * @capacity)
+      grow_hash_map
+    end
+    if @map[index].nil?
+      @map[index] = start_list(key, value)
+    else
+      @map[index].append(key, value)
     end
   end
 
