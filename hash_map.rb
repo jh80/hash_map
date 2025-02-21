@@ -82,24 +82,20 @@ class HashMap
 
   def keys
     keys = []
-    traverse_hash_map do |list|
-      keys += list.array_k unless list.nil?
-    end
+    traverse_hash_map { |node| keys << node.value[0] } 
     keys
   end
 
   def values
-    to_array { |list| list.array_v }
+    values = []
+    traverse_hash_map { |node| values << node.value[1]}
+    values
   end
 
   def entries
-    to_array do |list|
-      k_v = []
-      list.traverse_list do |node|
-        k_v << [node.key, node.value]
-      end
-      k_v
-    end
+    entries = []
+    traverse_hash_map {|node| entries << node.value }
+    entries
   end
 
   private
@@ -126,13 +122,13 @@ class HashMap
     end
   end
 
-  def to_array
-    array = []
-    traverse_hash_map do |list|
-      array += yield(list) unless list.nil?
-    end
-    array
-  end
+  # def to_array
+  #   array = []
+  #   traverse_hash_map do |list|
+  #     array += yield(list) unless list.nil?
+  #   end
+  #   array
+  # end
 
   def grow_hash_map
     k_vs = entries
