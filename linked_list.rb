@@ -9,16 +9,16 @@ class LinkedList
     @head = nil
   end
 
-  def append(key, value)
-    return @head = Node.new(key, value) if @head.nil?
+  def append(value)
+    return @head = Node.new(value) if @head.nil?
 
     traverse_list do |node|
-      return node.next_node = Node.new(key, value) if node.next_node.nil?
+      return node.next_node = Node.new(value) if node.next_node.nil?
     end
   end
 
-  def prepend(key, value)
-    new_node = Node.new(key, value)
+  def prepend(value)
+    new_node = Node.new(value)
     new_node.next_node = @head
     @head = new_node
   end
@@ -50,19 +50,19 @@ class LinkedList
     end
   end
 
-  def contains_v?(value)
+  def contains?(value)
     traverse_list do |node|
       return true if node.value == value
     end
     false
   end
 
-  def contains_k?(key)
-    traverse_list do |node|
-      return true if node.key == key
-    end
-    false
-  end
+  # def contains_k?(key)
+  #   traverse_list do |node|
+  #     return true if node.key == key
+  #   end
+  #   false
+  # end
 
   def find(value)
     i = 0
@@ -73,14 +73,14 @@ class LinkedList
     end
   end
 
-  def find_k(key)
-    i = 0
-    traverse_list do |node|
-      return i if node.key == key
+  # def find_k(key)
+  #   i = 0
+  #   traverse_list do |node|
+  #     return i if node.key == key
 
-      i += 1
-    end
-  end
+  #     i += 1
+  #   end
+  # end
 
   def to_s
     string = ''
@@ -90,12 +90,12 @@ class LinkedList
     string += '(nil)'
   end
 
-  def insert_at(key, value, index)
+  def insert_at(value, index)
     return prepend(key, value) if index.zero?
 
     i = 0
     traverse_list do |node|
-      return insert_between(Node.new(key, value), node, node.next_node) if i == index - 1
+      return insert_between(Node.new(value), node, node.next_node) if i == index - 1
 
       i += 1
     end
@@ -112,13 +112,13 @@ class LinkedList
     end
   end
 
-  def array_k
-    to_array { |node| node.key }
-  end
+  # def array_k
+  #   to_array { |node| node.key }
+  # end
 
-  def array_v
-    to_array { |node| node.value }
-  end
+  # def array_v
+  #   to_array { |node| node.value }
+  # end
 
   def traverse_list
     curr = @head
