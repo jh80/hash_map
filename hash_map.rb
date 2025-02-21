@@ -117,7 +117,11 @@ class HashMap
   def traverse_hash_map
     index = 0
     while index < @map.length
-      yield(@map[index])
+      unless @map[index].nil?
+        @map[index].traverse_list do |node| 
+          yield(node)
+        end
+      end
       index += 1
     end
   end
