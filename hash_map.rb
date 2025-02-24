@@ -26,7 +26,7 @@ class HashMap
     l_i = @map[index].find_k(key) unless @map[index].nil?
     if l_i
       node = @map[index].at(l_i)
-      node.value = value
+      node.value[1] = value
       return
     elsif (length + 1) > (@load_factor * @capacity)
       grow_hash_map
@@ -34,7 +34,7 @@ class HashMap
     if @map[index].nil?
       @map[index] = start_list(key, value)
     else
-      @map[index].append(key, value)
+      @map[index].append([key, value])
     end
   end
 
@@ -44,7 +44,7 @@ class HashMap
     return nil if (l_i = @map[index].find_k(key)).nil?
 
     node = @map[index].at(l_i)
-    node.value
+    node.value[1]
   end
 
   def has?(key)
@@ -82,13 +82,13 @@ class HashMap
 
   def keys
     keys = []
-    traverse_hash_map { |node| keys << node.value[0] } 
+    traverse_hash_map { |node| keys << node.value[0] }
     keys
   end
 
   def values
-    values = []
-    traverse_hash_map { |node| values << node.value[1]}
+    values = [] 
+    traverse_hash_map { |node| values << node.value[1] }
     values
   end
 
@@ -102,7 +102,7 @@ class HashMap
 
   def start_list(key, value)
     list = LinkedList.new
-    list.append(key, value)
+    list.append([key, value])
     list
   end
 

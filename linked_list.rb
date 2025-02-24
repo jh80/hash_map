@@ -73,14 +73,14 @@ class LinkedList
     end
   end
 
-  # def find_k(key)
-  #   i = 0
-  #   traverse_list do |node|
-  #     return i if node.key == key
+  def find_k(key)
+    i = 0
+    traverse_list do |node|
+      return i if node.value[0] == key
 
-  #     i += 1
-  #   end
-  # end
+      i += 1
+    end
+  end
 
   def to_s
     string = ''
@@ -135,9 +135,9 @@ class LinkedList
     node_before.next_node = new_node
   end
 
-  def to_array
-    array = []
-    traverse_list { |node| array << yield(node) }
-    array
-  end
+  # def to_array
+  #   array = []
+  #   traverse_list { |node| array << yield(node) }
+  #   array
+  # end
 end
